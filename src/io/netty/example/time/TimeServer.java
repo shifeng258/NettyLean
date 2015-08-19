@@ -49,7 +49,7 @@ public final class TimeServer {
                          p.addLast(sslCtx.newHandler(ch.alloc()));
                      }
                      //p.addLast(new LoggingHandler(LogLevel.INFO));
-                     p.addLast(new TimeClientHandler());
+                     p.addLast(new TimeServerHandler());
                  }
              });
 

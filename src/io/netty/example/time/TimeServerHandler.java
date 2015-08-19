@@ -10,12 +10,12 @@ import io.netty.handler.logging.LoggingHandler;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Date;
+import java.util.logging.Logger;
 
 public class TimeServerHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelActive(final ChannelHandlerContext ctx) throws UnknownHostException { // (1)
-        System.out.println("Host has sent the server time");
         ctx.writeAndFlush("Welcome to " + InetAddress.getLocalHost().getHostName() + "!\r\n");
         ctx.writeAndFlush("It is " + new Date() + " now.\r\n");
         final ByteBuf time = ctx.alloc().buffer(4); // (2)
